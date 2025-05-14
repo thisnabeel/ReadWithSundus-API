@@ -1,0 +1,6 @@
+<%= turbo_stream.append "children-container" do %>
+  <% form_builder = ActionView::Helpers::FormBuilder.new(:user, @guardian, self, {}) %>
+  <%= form_builder.fields_for :children, @child do |child_form| %>
+    <%= render partial: "child_fields", locals: { child_form: child_form } %>
+  <% end %>
+<% end %>

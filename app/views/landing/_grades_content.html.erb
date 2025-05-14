@@ -1,0 +1,60 @@
+<%= turbo_frame_tag "grades-content" do %>
+  <div class="mt-6">
+    <% case @active_tab %>
+    <% when "1st" %>
+      <ul class="list-disc pl-6">
+        <li>Letter Sounds & Blends (Phonics)</li>
+        <li>Sight Words (Top 100)</li>
+        <li>Short Stories with Simple Sentences</li>
+        <li>Picture-to-Word Matching</li>
+        <li>Comprehension: “Who / What / Where” questions</li>
+        <li>Fun Activity: Read a 3-sentence story and spot the rhyming words.</li>
+      </ul>
+    <% when "2nd" %>
+      <ul class="list-disc pl-6">
+        <li>Compound Words & Simple Punctuation</li>
+        <li>Sight Words (Next 200)</li>
+        <li>Story Sequencing (Beginning, Middle, End)</li>
+        <li>Comprehension: “Why” & “How” questions</li>
+        <li>Summarizing in 1 Sentence</li>
+        <li>Fun Activity: Re-order a mixed-up story.</li>
+      </ul>
+    <% when "3rd" %>
+      <ul class="list-disc pl-6">
+        <li>Reading Short Paragraphs</li>
+        <li>Identify Main Idea & Supporting Details</li>
+        <li>Introduction to Context Clues</li>
+        <li>Character Feelings & Actions</li>
+        <li>Compare & Contrast (Venn Diagrams)</li>
+        <li>Fun Activity: Make a comic strip summary of a paragraph.</li>
+      </ul>
+    <% when "4th" %>
+      <ul class="list-disc pl-6">
+        <li>Inferences & Predictions</li>
+        <li>Point of View (1st person / 3rd person)</li>
+        <li>Author’s Purpose (PIE: Persuade, Inform, Entertain)</li>
+        <li>Figurative Language: Similes & Metaphors</li>
+        <li>Comprehension Passages with Open-ended Questions</li>
+        <li>Fun Activity: Match emojis to story moods.</li>
+      </ul>
+    <% when "5th" %>
+      <ul class="list-disc pl-6">
+        <li>Theme vs Main Idea</li>
+        <li>Character Traits & Motivation</li>
+        <li>Fact vs Opinion</li>
+        <li>Summarizing in 3 Sentences</li>
+        <li>Reading Non-fiction Articles</li>
+        <li>Fun Activity: Build a “Fact or Opinion” quiz for friends.</li>
+      </ul>
+    <% when "6th" %>
+      <ul class="list-disc pl-6">
+        <li>Reading for Evidence (Cite from Text)</li>
+        <li>Analyzing Cause & Effect Relationships</li>
+        <li>Compare Different Genres (Fiction, Biography, etc.)</li>
+        <li>Argument & Persuasion Techniques in Texts</li>
+        <li>Practice with Long-Form Articles & Short Stories</li>
+        <li>Fun Activity: Debate activity using a story’s arguments.</li>
+      </ul>
+    <% end %>
+  </div>
+<% end %>

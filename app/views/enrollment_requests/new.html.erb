@@ -1,0 +1,17 @@
+<%= form_with model: @guardian, url: enrollment_requests_path, local: true do |f| %>
+  <%= f.email_field :email, placeholder: "Guardian Email" %>
+  <%= f.password_field :password, placeholder: "Password" %>
+  <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+  <%= f.date_field :birthday, placeholder: "Birthday" %>
+
+  <h3>Children</h3>
+  <div id="children-container">
+    <%= f.fields_for :children do |child_form| %>
+      <%= render partial: 'child_fields', locals: { child_form: child_form } %>
+    <% end %>
+  </div>
+
+  <%= button_to "Add Child", add_child_enrollment_requests_path, method: :post, data: { turbo_stream: true }, form: { data: { turbo_frame: "_top" } } %>
+
+  <%= f.submit "Submit Enrollment Request" %>
+<% end %>

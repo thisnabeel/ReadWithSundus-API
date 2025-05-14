@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "tabs" do %>
+  <div class="flex justify-center space-x-4 overflow-x-auto">
+    <% ["1st", "2nd", "3rd", "4th", "5th"].each do |tab| %>
+      <%= link_to root_path(grade: tab), data: { turbo_frame: "grades-wrapper" }, class: "px-2 py-1 rounded-full text-md inline-block #{active_tab == tab ? 'bg-yellow-300 text-gray-800' : 'bg-gray-200 text-gray-700'}" do %>
+        <%= tab %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

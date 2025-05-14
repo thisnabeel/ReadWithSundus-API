@@ -1,0 +1,29 @@
+<h1>Add Availability</h1>
+
+<%= form_with model: @user_availability, local: true do |form| %>
+  <div>
+    <%= form.label :day %>
+    <%= form.select :day, Date::DAYNAMES, prompt: 'Select a day' %>
+  </div>
+
+  <div>
+    <%= form.label :start_time %>
+    <%= form.time_select :start_time, minute_step: 30 %>
+  </div>
+
+  <div>
+    <%= form.label :end_time %>
+    <%= form.time_select :end_time, minute_step: 30 %>
+  </div>
+
+  <div>
+    <%= form.label :timezone %>
+    <%= form.time_zone_select :timezone, nil, prompt: 'Select a timezone' %>
+  </div>
+
+  <div>
+    <%= form.submit 'Save Availability', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', user_availabilities_path, class: 'btn btn-secondary' %>

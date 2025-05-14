@@ -1,0 +1,33 @@
+<%= turbo_frame_tag "availability_#{day}" do %>
+  <div class="day-section mb-4">
+    <h2 class="text-lg font-semibold mb-2 cursor-pointer" onclick="toggleSlots('<%= day %>')"><%= day %></h2>
+    <div id="slots-<%= day %>" class="hidden">
+      <%= render partial: 'slots', locals: {day: day, user_availabilities: user_availabilities}%>
+    </div>
+
+    <%= turbo_frame_tag "availability_slots_#{day}" do %>
+      <div class="selected-slots text-blue-500 mt-2 flex flex-wrap gap-2 justify-center">
+        <% selected_slots = user_availabilities.select { |a| a.day == day }
+          .sort_by(&:start_time)
+          .chunk_while { |prev, curr| prev.end_time == curr.start_time }
+          .map { |chunk| "#{chunk.first.start_time.strftime('%I:%M %p')}-#{chunk.last.end_time.strftime('%I:%M %p')}" } %>
+        
+        <% selected_slots.each do |slot| %>
+          <div class="border border-gray-300 px-3 py-1 rounded cursor-pointer"><%= slot %></div>
+        <% end %>
+
+
+        <span onclick="toggleSlots('<%= day %>')">
+            <%= selected_slots.present? ? '' : 'No Slots Available Yet, Click to Select...' %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<script>
+function toggleSlots(day) {
+  const slotsDiv = document.getElementById(`slots-${day}`);
+  slotsDiv.classList.toggle('hidden');
+}
+</script>

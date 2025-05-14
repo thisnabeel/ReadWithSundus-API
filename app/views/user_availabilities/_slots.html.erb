@@ -1,0 +1,16 @@
+<%= turbo_frame_tag "availability_slot_options_#{day}", class: "time-slots flex flex-wrap gap-2 " do %>
+    <% (8..20).each do |hour| %>
+        <% [0, 30].each do |minute| %>
+            <% start_time = Time.zone.local(2025, 5, 12, hour, minute) %>
+            <% end_time = start_time + 30.minutes %>
+            <%= form_with url: toggle_user_availabilities_path, method: :post, data: { turbo_frame: "availability_slots_#{day}" }, class: 'inline', scope: :user_availability do |form| %>
+                <div class="time-slot border border-gray-300 px-3 py-1 rounded cursor-pointer hover:bg-blue-100 <%= user_availabilities.any? { |a| a.day == day && a.start_time.strftime('%H:%M') == start_time.strftime('%H:%M') } ? 'bg-purple-300' : '' %>" data-day="<%= day %>" data-time="<%= start_time.strftime('%H:%M') %>">
+                    <%= form.hidden_field :day, value: day %>
+                    <%= form.hidden_field :start_time, value: start_time.strftime('%I:%M %p') %>
+                    <%= form.hidden_field :end_time, value: end_time.strftime('%I:%M %p') %>
+                    <%= form.submit start_time.strftime('%I:%M %p'), class: 'block', data: { action: "click->stop-propagation#stop" } %>
+                </div>
+            <% end %>
+        <% end %>
+    <% end %>
+<% end %>

@@ -1,0 +1,18 @@
+<div class="container mx-auto max-w-4xl text-center flex justify-center items-center min-h-screen">
+  <div class="max-w-md wrapper">
+    <h1 class="text-2xl font-bold mb-4">My Weekly Availability</h1>
+
+    <div class="availability-container">
+      <% %w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday].each do |day| %>
+        <%= render partial: "day", locals: { day: day, user_availabilities: @user_availabilities } %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleSlots(day) {
+  const slotsDiv = document.getElementById(`slots-${day}`);
+  slotsDiv.classList.toggle('hidden');
+}
+</script>
